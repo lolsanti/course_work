@@ -83,4 +83,33 @@ class Trader:
 if __name__ == '__main__':
     trader = Trader()
     trader.load_state()
-    print("Current rate:", trader.state['rate'])
+
+
+if __name__ == '__main__':
+    trader = Trader()
+    while True:
+        clear_screen()
+        print("Current rate:", trader.state['rate'])
+        print("USD balance:", trader.state['usd_balance'])
+        print("UAH balance:", trader.state['uah_balance'])
+        print("Enter command:")
+        command = input().strip().lower()
+        if command == "quit":
+            break
+        elif command == "buy":
+            print("Enter amount to buy:")
+            amount = float(input())
+            trader.buy(amount)
+        elif command == "sell":
+            print("Enter amount to sell:")
+            amount = float(input())
+            trader.sell(amount)
+        elif command == "buy_all":
+            trader.buy_all()
+        elif command == "sell_all":
+            trader.sell_all()
+        elif command == "next_rate":
+            trader.next_rate()
+        else:
+            print("Unknown command")
+        input("Press Enter to continue...")
